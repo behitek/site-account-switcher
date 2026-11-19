@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Account Switcher</title>
+  <link rel="stylesheet" href="popup.css" />
+</head>
+<body>
+  <header>
+    <div class="site">
+      <span id="siteIcon" class="dot"></span>
+      <div>
+        <div id="siteName" class="site-name">…</div>
+        <div id="siteSub" class="sub"></div>
+      </div>
+    </div>
+    <div>
+      <button id="openHelp" class="icon-btn" title="How to use">?</button>
+      <button id="openOptions" class="icon-btn" title="Settings & sites">⚙</button>
+    </div>
+  </header>
+
+  <main id="main"></main>
+
+  <div id="toast" class="toast" hidden></div>
+
+  <template id="tplProfile">
+    <li class="profile">
+      <button class="switch" title="Switch to this account">
+        <span class="avatar"></span>
+        <span class="meta">
+          <span class="name"></span>
+          <span class="email"></span>
+        </span>
+        <span class="badge">Active</span>
+      </button>
+      <div class="actions">
+        <button class="act save" title="Save the current login into this profile">⤓</button>
+        <button class="act rename" title="Rename">✎</button>
+        <button class="act del" title="Delete profile">✕</button>
+      </div>
+    </li>
+  </template>
+
+  <script type="module" src="popup.js"></script>
+</body>
+</html>

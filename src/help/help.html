@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Account Switcher Help</title>
+  <link rel="stylesheet" href="../popup/popup.css" />
+  <link rel="stylesheet" href="../options/options.css" />
+  <link rel="stylesheet" href="help.css" />
+</head>
+<body class="options">
+  <div class="wrap">
+    <h1>How to use Site Account Switcher</h1>
+    <p class="lead">Keep several Claude and ChatGPT accounts (or accounts for any site you add) in one Chrome profile, and switch between them in one click. A switch changes only the cookies of the site you're on. Gmail, GitHub and every other site stay signed in as they were.</p>
+
+    <nav class="toc">
+      <a href="#setup">First-time setup</a>
+      <a href="#switch">Switching accounts</a>
+      <a href="#popup">The popup at a glance</a>
+      <a href="#sites">Adding other sites</a>
+      <a href="#rules">Rules to remember</a>
+      <a href="#faq">Troubleshooting</a>
+    </nav>
+
+    <section id="setup">
+      <h2>1. First-time setup: save each account once</h2>
+      <ol class="steps">
+        <li><b>Pin the extension.</b> Click the puzzle-piece icon in Chrome's toolbar, then click the pin next to <i>Site Account Switcher</i>.</li>
+        <li><b>Sign in to your first account</b> on <a href="https://claude.ai" target="_blank" rel="noopener">claude.ai</a> or <a href="https://chatgpt.com" target="_blank" rel="noopener">chatgpt.com</a> as usual.</li>
+        <li>Click the extension icon, optionally type a name (e.g. <i>Work</i>), then click <span class="kbd">Save current login</span>. If you leave the name empty, the account's email is used.</li>
+        <li>Click <span class="kbd">Sign in another account…</span>. The site reloads signed out, but your first account is <b>not</b> logged out. Its session is kept safely in the saved profile.</li>
+        <li><b>Sign in to the next account</b> on the site, then click <span class="kbd">Save current login</span> again.</li>
+        <li>Repeat steps 4–5 for every extra account. Each site (Claude, ChatGPT, …) has its own separate list.</li>
+      </ol>
+    </section>
+
+    <section id="switch">
+      <h2>2. Switching accounts</h2>
+      <p>Open the site, click the extension icon and click the account you want. All open tabs of that site reload as the chosen account within a second or two.</p>
+      <p>The toolbar icon shows a small badge with the first letters of the active account, so you can always see who you're signed in as.</p>
+      <p class="note">Before switching away, the extension automatically saves the current account's latest session. You don't need to re-save after long use.</p>
+    </section>
+
+    <section id="popup">
+      <h2>3. The popup at a glance</h2>
+      <table class="legend">
+        <tr><td><span class="pill active">ACTIVE</span></td><td>The account currently signed in on this site.</td></tr>
+        <tr><td><span class="kbd">⤓</span></td><td>Update this profile with the login currently in the browser. Use it after you re-sign in to that account.</td></tr>
+        <tr><td><span class="kbd">✎</span></td><td>Rename the profile. Press Enter to save or Esc to cancel.</td></tr>
+        <tr><td><span class="kbd">✕</span></td><td>Delete the saved profile (click twice to confirm). This doesn't sign anything out in the browser.</td></tr>
+        <tr><td><span class="kbd">⚙</span></td><td>Settings: behaviour switches, site definitions, backup and restore.</td></tr>
+        <tr><td><span class="kbd">?</span></td><td>This help page.</td></tr>
+      </table>
+      <p class="muted">The ⤓ ✎ ✕ buttons appear when you hover over an account.</p>
+    </section>
+
+    <section id="sites">
+      <h2>4. Adding other sites</h2>
+      <p>Claude and ChatGPT work out of the box. For any other site, open it, click the extension icon and click <span class="kbd">Add &lt;domain&gt;</span>. Chrome asks you to allow access to <b>that domain only</b>. After that, the site works exactly like Claude and ChatGPT.</p>
+      <p class="muted">Advanced: in ⚙ Settings → Sites you can change which cookie domains belong to a site. For example, a site might sign in through a separate auth domain.</p>
+    </section>
+
+    <section id="rules">
+      <h2>5. Rules to remember</h2>
+      <ul class="rules">
+        <li class="bad"><b>Don't use the site's own "Log out" button</b> on an account you want to keep. It ends that session on the server, and the saved profile stops working. Use <span class="kbd">Sign in another account…</span> instead.</li>
+        <li><b>One account per site at a time.</b> All claude.ai tabs share the same account. To use two accounts side by side, open the second one in an Incognito window (it has its own separate account list) or in another Chrome profile.</li>
+        <li><b>Saved profiles are live logins.</b> Anyone who has your Chrome profile or an exported backup file can use them. Never share the backup file or commit it anywhere.</li>
+        <li><b>Only the selected site is touched.</b> Switching Claude never affects ChatGPT, Google or anything else, and the reverse is also true.</li>
+      </ul>
+    </section>
+
+    <section id="faq">
+      <h2>6. Troubleshooting</h2>
+      <details>
+        <summary>I switched, but the site shows a login page</summary>
+        <p>That saved session has expired or was logged out on the server. Sign in to that account again, then click <span class="kbd">⤓</span> on its profile to update it.</p>
+      </details>
+      <details>
+        <summary>"Not auto-saving … the current session is X, not Y"</summary>
+        <p>You signed in to a different account manually while profile Y was active. The extension refused to overwrite Y with X's login. If you want to keep X, click <span class="kbd">Save current login</span> first, then switch.</p>
+      </details>
+      <details>
+        <summary>"No cookies found for this site. Sign in first."</summary>
+        <p>You're signed out on this site. Sign in, then save.</p>
+      </details>
+      <details>
+        <summary>The site shows a Cloudflare "verify you are human" check after switching</summary>
+        <p>This is normal now and then. Complete the check once and the extension keeps that clearance cookie across switches.</p>
+      </details>
+      <details>
+        <summary>The popup says "Not a managed site"</summary>
+        <p>The current tab isn't Claude, ChatGPT or a site you added. Open the right site first, or add this one with the <span class="kbd">Add</span> button.</p>
+      </details>
+      <details>
+        <summary>Moving to a new computer or Chrome profile</summary>
+        <p>Go to ⚙ Settings → Backup → <span class="kbd">Export…</span> on the old machine and <span class="kbd">Import…</span> on the new one. Delete the file afterwards, because it holds live logins.</p>
+      </details>
+      <details>
+        <summary>Account names show as "Account 1, Account 2…"</summary>
+        <p>The extension couldn't read the email from the site. Rename the profiles with <span class="kbd">✎</span>. Everything else works normally.</p>
+      </details>
+    </section>
+
+    <p class="muted foot">Site Account Switcher · <a href="../options/options.html">Settings</a></p>
+  </div>
+</body>
+</html>

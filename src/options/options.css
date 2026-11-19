@@ -1,0 +1,33 @@
+body.options { width: auto; background: var(--panel); }
+.wrap { max-width: 760px; margin: 0 auto; padding: 28px 16px 60px; }
+h1 { font-size: 22px; margin: 0 0 6px; }
+.lead { color: var(--muted); margin: 0 0 22px; max-width: 62ch; }
+section { background: var(--bg); border: 1px solid var(--line); border-radius: 12px; padding: 16px 18px; margin-bottom: 16px; }
+h2 { font-size: 15px; margin: 0 0 12px; }
+.h2row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+.h2row h2 { margin: 0; }
+.check { display: flex; gap: 10px; align-items: flex-start; padding: 6px 0; }
+.check input { margin-top: 3px; }
+.check span { color: var(--muted); }
+.check b { color: var(--text); font-weight: 600; }
+.muted { color: var(--muted); }
+.btn.small { font-size: 12px; padding: 5px 10px; margin-top: 8px; }
+.btn.danger { color: var(--danger); }
+.site-card { border: 1px solid var(--line); border-radius: 10px; margin-bottom: 8px; }
+.site-card summary { display: flex; align-items: center; gap: 10px; padding: 10px 12px; cursor: pointer; list-style: none; }
+.site-card summary::-webkit-details-marker { display: none; }
+.site-card summary .title { font-weight: 600; flex: 1; }
+.site-card[open] summary { border-bottom: 1px solid var(--line); }
+.site-card > .grid, .site-card > .row, .site-card > .profiles-list { padding: 0 12px; }
+.site-card > .row { padding-bottom: 12px; flex-wrap: wrap; }
+.grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; padding-top: 12px !important; }
+.grid label { display: flex; flex-direction: column; gap: 4px; font-weight: 600; font-size: 12px; }
+.grid label:first-child { grid-column: 1 / -1; }
+.grid small { font-weight: 400; color: var(--muted); }
+textarea {
+  font: 12px/1.4 ui-monospace, SFMono-Regular, Menlo, monospace; padding: 6px 8px; border-radius: 8px;
+  border: 1px solid var(--line); background: var(--bg); color: var(--text); resize: vertical;
+}
+.profiles-list { margin-top: 12px; }
+.profiles-list .p { display: flex; justify-content: space-between; padding: 6px 0; border-top: 1px dashed var(--line); font-size: 12px; }
+@media (max-width: 560px) { .grid { grid-template-columns: 1fr; } }

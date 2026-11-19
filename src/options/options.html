@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Account Switcher Settings</title>
+  <link rel="stylesheet" href="../popup/popup.css" />
+  <link rel="stylesheet" href="options.css" />
+</head>
+<body class="options">
+  <div class="wrap">
+    <h1>Site Account Switcher</h1>
+    <p class="lead">Each site keeps its own list of saved logins. Switching swaps only that site's cookies (and, optionally, its local storage), so the rest of the browser is never touched. New here? Read the <a href="../help/help.html">how-to guide</a>.</p>
+
+    <section>
+      <h2>Behaviour</h2>
+      <label class="check"><input type="checkbox" id="autoSave" /> <span><b>Auto-save before switching.</b> Before leaving an account, save its live cookies into its profile so refreshed session tokens are kept. This is skipped if the signed-in email doesn't match the profile.</span></label>
+      <label class="check"><input type="checkbox" id="swapLocalStorage" /> <span><b>Swap localStorage too.</b> Read from and write to the site's open tabs. Helps sites that cache the account in localStorage.</span></label>
+      <label class="check"><input type="checkbox" id="clearSiteData" /> <span><b>Clear the site's other storage on switch.</b> Covers IndexedDB, Cache Storage and service workers for the site's origins only, so no data from the previous account carries over.</span></label>
+    </section>
+
+    <section>
+      <div class="h2row"><h2>Sites</h2><button id="addSite" class="btn">+ Add site</button></div>
+      <div id="sites"></div>
+      <button id="restoreBuiltins" class="btn small">Restore built-in Claude / ChatGPT definitions</button>
+    </section>
+
+    <section>
+      <h2>Backup</h2>
+      <p class="muted">The export file holds <b>live session cookies</b>, so anyone who has it can use your accounts. Keep it private.</p>
+      <div class="row">
+        <button id="export" class="btn">Export…</button>
+        <label class="btn">Import… <input type="file" id="import" accept="application/json" hidden /></label>
+      </div>
+    </section>
+  </div>
+  <div id="toast" class="toast" hidden></div>
+
+  <template id="tplSite">
+    <details class="site-card">
+      <summary><span class="dot"></span><span class="title"></span><span class="count muted"></span></summary>
+      <div class="grid">
+        <label>Name <input type="text" data-f="name" /></label>
+        <label>Cookie domains <small>(one per line; subdomains are included)</small><textarea data-f="domains" rows="2"></textarea></label>
+        <label>Origins to clear storage for <small>(one per line)</small><textarea data-f="origins" rows="2"></textarea></label>
+        <label>Cookies to never swap <small>(regex, one per line)</small><textarea data-f="keep" rows="2"></textarea></label>
+        <label>Who-am-I endpoints <small>(JSON URLs containing the email; optional)</small><textarea data-f="whoami" rows="2"></textarea></label>
+      </div>
+      <div class="profiles-list"></div>
+      <div class="row">
+        <button class="btn primary save">Save site</button>
+        <button class="btn reset" hidden>Reset to default</button>
+        <button class="btn danger delete">Remove site & its profiles</button>
+      </div>
+    </details>
+  </template>
+
+  <script type="module" src="options.js"></script>
+</body>
+</html>

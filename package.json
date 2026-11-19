@@ -1,0 +1,15 @@
+{
+  "name": "site-account-switcher",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Chrome extension: switch between multiple Claude/ChatGPT (or any site) accounts by swapping that site's cookies.",
+  "scripts": {
+    "test": "node --test test/unit.test.js",
+    "test:e2e": "node test/e2e.mjs",
+    "zip": "rm -f dist/site-account-switcher.zip && mkdir -p dist && zip -r dist/site-account-switcher.zip manifest.json src icons"
+  },
+  "devDependencies": {
+    "puppeteer-core": "^23.11.1"
+  }
+}
